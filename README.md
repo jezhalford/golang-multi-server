@@ -2,3 +2,36 @@ golang-multi-server
 ===================
 
 A multi-server web application, using Chef and Go.
+
+Requirements
+------------
+ * Vagrant 1.5+
+ * VirtualBox
+
+
+ Usage
+ -----
+
+ Checkout the repo, `cd` into it and run -
+
+     vagrant up
+
+This will create three VMs - one web and two application. The web node will
+balance requests between app1 and app2 using a round-robin mechanism.
+
+
+Deploying Code Changes
+----------------------
+
+Changes to the Go application code can be applied to the servers by running
+
+    ./provisioning/deploy/deploy.sh
+
+This will re-run the Vagrant shell provisioner that is used to compile the
+Go application and (re)-start its service.
+
+
+Notes
+-----
+
+The golang cookbook in this repo is taken from https://github.com/NOX73/chef-golang.
