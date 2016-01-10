@@ -9,12 +9,12 @@ Requirements
  * VirtualBox
 
 
- Usage
- -----
+Usage
+-----
 
- Checkout the repo, `cd` into it and run -
+Checkout the repo, `cd` into it and run -
 
-     vagrant up
+    vagrant up
 
 This will create three VMs - one web and two application. The web node will
 balance requests between app1 and app2 using a round-robin mechanism.
