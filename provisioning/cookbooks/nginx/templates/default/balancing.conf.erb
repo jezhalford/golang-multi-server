@@ -1,0 +1,12 @@
+upstream sampleapp {
+    server app1.sample.local:8484;
+    server app2.sample.local:8484;
+}
+
+server {
+    listen 80;
+
+    location / {
+        proxy_pass http://sampleapp;
+    }
+}
