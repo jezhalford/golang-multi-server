@@ -25,13 +25,20 @@ Deploying Code Changes
 
 Changes to the Go application code can be applied to the servers by running
 
-    ./provisioning/deploy/deploy.sh
+    ./deploy/deploy.sh
 
 This will re-run the Vagrant shell provisioner that is used to compile the
 Go application and (re)-start its service.
 
 
-Notes
------
+Testing
+-------
 
-The golang cookbook in this repo is taken from https://github.com/NOX73/chef-golang.
+You'll need to install kitchen...
+
+    gem install test-kitchen
+    gem install kitchen-vagrant
+
+...and then run the tests -
+
+    kitchen test

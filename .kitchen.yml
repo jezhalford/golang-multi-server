@@ -1,0 +1,47 @@
+---
+driver:
+  name: vagrant
+
+driver_config:
+  box: ubuntu/trusty64
+
+require_chef_omnibus: 12.5.0
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: web
+    run_list:
+      - recipe[nginx::default]
+      - recipe[hostsfile::default]
+    driver_config:
+      network:
+        - ['private_network', {ip: '33.33.33.10'}]
+
+  - name: app1
+    run_list:
+      - recipe[app::default]
+      - recipe[hostsfile::default]
+    driver_config:
+      network:
+        - ['private_network', {ip: '33.33.33.11'}]
+
+  - name: app2
+    run_list:
+      - recipe[app::default]
+      - recipe[hostsfile::default]
+    driver_config:
+      network:
+        - ['private_network', {ip: '33.33.33.12'}]
+
+
+suites:
+  - name: web
+    includes:
+      - web
+
+  - name: app
+    includes:
+      - app1
+      - app2

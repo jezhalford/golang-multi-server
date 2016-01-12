@@ -1,4 +1,5 @@
 package 'upstart'
+package 'golang'
 
 user 'sample' do
   comment 'sample app user'

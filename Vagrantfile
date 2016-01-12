@@ -11,7 +11,6 @@ Vagrant.configure("2") do |config|
     web.vm.network :private_network, ip: "33.33.33.10"
 
     web.vm.provision "chef_zero" do |chef|
-      chef.cookbooks_path = "provisioning/cookbooks"
       chef.add_recipe "hostsfile"
       chef.add_recipe "nginx"
     end
@@ -24,13 +23,11 @@ Vagrant.configure("2") do |config|
       app.vm.hostname = "app#{i}-sample"
 
       app.vm.provision "chef_zero" do |chef|
-        chef.cookbooks_path = "provisioning/cookbooks"
         chef.add_recipe "hostsfile"
-        chef.add_recipe "golang"
         chef.add_recipe "app"
       end
 
-      app.vm.provision "shell", path: "provisioning/deploy/internal-deploy.sh"
+      app.vm.provision "shell", path: "deploy/internal-deploy.sh"
     end
   end
 
