@@ -19,6 +19,7 @@ Checkout the repo, `cd` into it and run -
 This will create three VMs - one web and two application. The web node will
 balance requests between app1 and app2 using a round-robin mechanism.
 
+You can then visit http://33.33.33.10 to see the servers working.
 
 Deploying Code Changes
 ----------------------
